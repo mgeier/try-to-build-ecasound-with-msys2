@@ -14,6 +14,7 @@ jobs:
         with:
           release: false
           install: >-
+            git
             mingw-w64-x86_64-libsamplerate
             mingw-w64-x86_64-libsndfile
             mingw-w64-x86_64-dlfcn
@@ -38,7 +39,6 @@ jobs:
       #  run: |
       #    ./waf install
       - name: get Ecasound source code
-        shell: bash
         run: |
           git clone https://git.code.sf.net/p/ecasound/code ecasound
           cd ecasound
