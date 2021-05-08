@@ -14,25 +14,25 @@ jobs:
           install: >-
             mingw-w64-x86_64-libsamplerate
             mingw-w64-x86_64-libsndfile
-      - name: get JACK2 source code
-        uses: actions/checkout@v2
-        with:
-          repository: jackaudio/jack2
-          path: jack2
-      - name: waf configure
-        working-directory: jack2
-        run: |
-          ./waf configure \
-            --prefix=/mingw64 \
-            --
-      - name: waf build
-        working-directory: jack2
-        run: |
-          ./waf build
-      - name: waf install
-        working-directory: jack2
-        run: |
-          ./waf install
+      #- name: get JACK2 source code
+      #  uses: actions/checkout@v2
+      #  with:
+      #    repository: jackaudio/jack2
+      #    path: jack2
+      #- name: waf configure
+      #  working-directory: jack2
+      #  run: |
+      #    ./waf configure \
+      #      --prefix=/mingw64 \
+      #      --
+      #- name: waf build
+      #  working-directory: jack2
+      #  run: |
+      #    ./waf build
+      #- name: waf install
+      #  working-directory: jack2
+      #  run: |
+      #    ./waf install
       - name: get Ecasound source code
         shell: bash
         run: |
@@ -49,6 +49,7 @@ jobs:
         #--enable-shared[=PKGS]  build shared libraries [default=yes]
         #--enable-static[=PKGS]  build static libraries [default=yes]
         #--enable-all-static	  Build only static binaries (default = no)
+        #--enable-jack \
         run: |
           ./configure \
             --disable-dbc \
@@ -63,7 +64,6 @@ jobs:
             --disable-audiofile \
             --enable-sndfile \
             --disable-alsa \
-            --enable-jack \
             --enable-sys-readline \
             --disable-liboil \
             --disable-liblilv \
