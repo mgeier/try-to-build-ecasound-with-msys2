@@ -15,6 +15,7 @@ jobs:
             mingw-w64-x86_64-libsamplerate
             mingw-w64-x86_64-libsndfile
             mingw-w64-x86_64-dlfcn
+            msys2-runtime-devel
       #- name: get JACK2 source code
       #  uses: actions/checkout@v2
       #  with:
