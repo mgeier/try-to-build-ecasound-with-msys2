@@ -69,7 +69,7 @@ jobs:
             --disable-liboil \
             --disable-liblilv \
             --disable-liblo \
-            LIBS="-lws2_32 -lltdl"
+            LIBS="-lws2_32"
       - name: make
         working-directory: ecasound
         run: |
