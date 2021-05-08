@@ -1,0 +1,37 @@
+name: Build ecasound with MSYS2
+on: [push, pull_request]
+jobs:
+  build-ecasound:
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: msys2 {0}
+    steps:
+      - name: Install MSYS2
+        uses: msys2/setup-msys2@v2
+        with:
+          release: false
+      - name: git clone
+        shell: bash
+        run: |
+          git clone https://git.code.sf.net/p/ecasound/code ecasound
+          cd ecasound
+          git checkout v2_9_3
+      - name: autogen
+        working-directory: ecasound
+        run: |
+          ./autogen-vc.sh
+      - name: configure
+        working-directory: ecasound
+        run: |
+          ./configure --help
+          echo '########'
+          ./configure
+      - name: make
+        working-directory: ecasound
+        run: |
+          make
+      - name: make install
+        working-directory: ecasound
+        run: |
+          make install
