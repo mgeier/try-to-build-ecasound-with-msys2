@@ -25,6 +25,10 @@ jobs:
           ./waf configure \
             --prefix=/mingw64 \
             --
+      - name: waf build
+        working-directory: jack2
+        run: |
+          ./waf build
       - name: waf install
         working-directory: jack2
         run: |
