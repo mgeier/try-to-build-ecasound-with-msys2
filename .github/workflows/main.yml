@@ -14,7 +14,6 @@ jobs:
           install: >-
             mingw-w64-x86_64-libsamplerate
             mingw-w64-x86_64-libsndfile
-            mingw-w64-x86_64-portaudio
       - name: get JACK2 source code
         uses: actions/checkout@v2
         with:
@@ -23,9 +22,13 @@ jobs:
       - name: waf configure
         working-directory: jack2
         run: |
-          ./waf --help
-          echo '#########'
-          ./waf configure
+          ./waf configure \
+            --prefix=/mingw64 \
+            --
+      - name: waf install
+        working-directory: jack2
+        run: |
+          ./waf install
       - name: get Ecasound source code
         shell: bash
         run: |
@@ -38,7 +41,7 @@ jobs:
           ./autogen-vc.sh
       - name: configure
         working-directory: ecasound
-        # --disable-largefile     omit support for large files
+        #--disable-largefile     omit support for large files
         #--enable-shared[=PKGS]  build shared libraries [default=yes]
         #--enable-static[=PKGS]  build static libraries [default=yes]
         #--enable-all-static	  Build only static binaries (default = no)
