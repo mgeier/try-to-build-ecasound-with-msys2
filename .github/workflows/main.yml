@@ -6,8 +6,8 @@ jobs:
     defaults:
       run:
         shell: msys2 {0}
-    env:
-      CPPFLAGS: -I/usr/include
+    #env:
+    #  CPPFLAGS: -I/usr/include
     steps:
       - name: Install MSYS2
         uses: msys2/setup-msys2@v2
@@ -18,7 +18,7 @@ jobs:
             mingw-w64-x86_64-libsamplerate
             mingw-w64-x86_64-libsndfile
             mingw-w64-x86_64-dlfcn
-            msys2-runtime-devel
+            mingw-w64-x86_64-headers-git
       #- name: get JACK2 source code
       #  uses: actions/checkout@v2
       #  with:
