@@ -73,6 +73,12 @@ jobs:
             --disable-liblilv \
             --disable-liblo \
             LIBS="-lws2_32"
+      - name: upload config.log
+        if: failure()
+        uses: actions/upload-artifact@v2
+        with:
+          name: config.log
+          path: ecasound/config.log
       - name: make
         working-directory: ecasound
         run: |
